@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  roboroots-db:
+    image: postgres:15
+    container_name: roboroots_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: roboroots_db
+    ports:
+      - '5454:5432'
+    volumes:
+      - roboroots_db:/var/lib/postgresql/data
+    restart: unless-stopped
+
+
+  mongodb:
+    image: mongo:6
+    container_name: roboroots_mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - '27017:27017'
+    volumes:
+      - roboroots_mongodb_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  roboroots_db:
+  roboroots_mongodb_data:
