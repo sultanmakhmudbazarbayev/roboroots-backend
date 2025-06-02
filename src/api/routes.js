@@ -3,7 +3,7 @@ const { verifyUser } = require('./middlewares/tokenVerifier');
 const router = express.Router();
 
 //  Chatbot
-// router.use('/chatbot', require('./routes/chatbot'));
+router.use('/chatbot', verifyUser, require('./routes/chatbot'));
 
 /// Authentication and authorization
 router.use('/auth', require('./routes/auth'));

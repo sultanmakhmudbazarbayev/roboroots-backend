@@ -5,77 +5,87 @@ const { createCertificate } = require('../services/certificateService');
 const { Course, Lesson, LessonProgress, Quiz, Question, Answer, QuizResult, User } = require('../../db/models/index');
 
 exports.createCourse = tryCatch(async (req, res) => {
-    const {
-      category,
-      name,
-      author,
-      description,
-      image,
-      price,
-      lessons,
-    } = req.body;
-  
-    if (!Array.isArray(lessons) || !lessons.length) {
-      return res.status(400).json({ message: 'Must supply at least one lesson' });
-    }
-  
-    // Use a transaction to guarantee all-or-nothing
-    const course = await Course.sequelize.transaction(async (t) => {
-      // Create the course + nested lessons
-      const newCourse = await Course.create(
-        {
-          category,
-          name,
-          author,
-          description,
-          image,
-          price,
-          Lessons: lessons.map((lesson) => ({
+  const {
+    category,
+    name,
+    author,
+    description,
+    image,
+    price,
+    lessons
+  } = req.body;
+
+  // Basic validation
+  if (!category || !name || !author || !Array.isArray(lessons) || lessons.length < 1) {
+    return res.status(400).json({ message: 'Missing required fields or no lessons provided' });
+  }
+
+  // All‐or‐nothing: wrap in a transaction
+  const createdCourse = await Course.sequelize.transaction(async (t) => {
+    // Create Course and nested Lessons/Quizzes/Questions/Answers in one go
+    const newCourse = await Course.create(
+      {
+        category,
+        name,
+        author,
+        description: description || null,
+        image: image || null,
+        price,
+
+        // Create each lesson (no IDs in request)
+        Lessons: lessons.map((lesson) => {
+          return {
             name: lesson.title,
             description: lesson.description || null,
             video_url: lesson.video_url || null,
-            // each lesson may have exactly one quiz
+
+            // Exactly one Quiz per lesson
             Quiz: {
               title: lesson.quiz.title,
-              Questions: lesson.quiz.questions.map((q) => ({
-                text: q.question,
-                Answers: q.answers.map((a) => ({
-                  text: a.text,
-                  is_correct: a.is_correct === true,
-                })),
-              })),
-            },
-          })),
-        },
-        {
-          include: [
-            {
-              model: Lesson,
-              include: [
-                {
-                  model: Quiz,
-                  include: [
-                    {
-                      model: Question,
-                      include: [Answer],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-          transaction: t,
-        }
-      );
-  
-      return newCourse;
-    });
-  
-    return res.status(201).json({
-      message: 'Course created successfully',
-      data: { data: course },
-    });
+              Questions: lesson.quiz.questions.map((q) => {
+                return {
+                  text: q.question,
+                  Answers: q.answers.map((a) => {
+                    return {
+                      text: a.text,
+                      is_correct: a.is_correct === true
+                    };
+                  })
+                };
+              })
+            }
+          };
+        })
+      },
+      {
+        include: [
+          {
+            model: Lesson,
+            include: [
+              {
+                model: Quiz,
+                include: [
+                  {
+                    model: Question,
+                    include: [Answer]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        transaction: t
+      }
+    );
+
+    return newCourse;
   });
+
+  return res.status(201).json({
+    message: 'Course created successfully',
+    data: { data: createdCourse }
+  });
+});
 
 
 exports.getAllCourses = tryCatch(async (req, res) => {

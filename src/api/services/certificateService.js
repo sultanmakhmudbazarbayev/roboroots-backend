@@ -68,8 +68,12 @@ async function createCertificate(userId, courseId) {
   const cert = await Certificate.create({
     user_id:  userId,
     url_link,
-    info
+    info,
+    course_id: courseId
   });
+
+  user.certificates_earned_count += 1;
+  user.save();
 
   return cert;
 }

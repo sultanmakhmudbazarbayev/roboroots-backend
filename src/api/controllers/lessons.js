@@ -28,7 +28,7 @@ exports.saveLessonProgress = tryCatch(async (req, res) => {
     // no record yet, create it
     record = await LessonProgress.create({
       user_id:   userId,
-      lesson_id,
+      lesson_id: lessonId,
       progress,
       completed: progress > 0.9
     });
@@ -66,7 +66,7 @@ exports.submitQuizResult = tryCatch(async (req, res) => {
     // create first record
     result = await QuizResult.create({
       user_id:   userId,
-      lesson_id,
+      lesson_id: lessonId,
       quiz_id:   quiz.id,
       score
     });

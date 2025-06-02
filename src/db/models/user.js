@@ -38,7 +38,7 @@ const User = sequelize.define('User', {
     balance: {
       allowNull: false,
       type: DataTypes.FLOAT,
-      defaultValue: 0.00
+      defaultValue: 100.00
     },
     projects_completed_count: {
       type: DataTypes.INTEGER,

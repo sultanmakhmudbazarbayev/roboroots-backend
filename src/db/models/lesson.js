@@ -16,7 +16,7 @@ const Lesson = sequelize.define('Lesson', {
     },
     video_url: {
         allowNull: false,
-        unique: true,
+        unique: false,
         type: DataTypes.STRING
     },
     course_id: {
