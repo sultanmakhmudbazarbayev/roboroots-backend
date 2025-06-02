@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>RoboRoots | Build robots, faster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A blazing‑fast toolkit for makers who’d rather ship than solder." />
+
+    <!--  Favicons & Social preview (replace with real files)  -->
+    <link rel="icon" href="./rocket.png" />
+    <meta property="og:title" content="RoboRoots – Build robots, faster" />
+    <meta property="og:description" content="A blazing‑fast toolkit for makers who’d rather ship than solder." />
+    <meta property="og:image" content="/public/og-image.png" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ============  HERO  ============ -->
+    <header id="hero" class="section hero">
+      <div class="container hero__content">
+        <div class="hero__text">
+          <h1>RoboRoots — <span class="gradient">Learn and Build robots faster.</span></h1>
+          <p class="lead">
+            A blazing‑fast platform for makers who’d rather <strong>ship</strong> than solder.
+          </p>
+          <div class="cta">
+            <a href="#pricing" class="btn btn--primary">Get started</a>
+            <a href="#features" class="btn btn--ghost">Learn more</a>
+          </div>
+        </div>
+        <img src="./rocket.png" alt="Rocket illustration" class="hero__img" />
+      </div>
+    </header>
+
+    <!-- ============  FEATURES  ============ -->
+    <section id="features" class="section features">
+      <div class="container">
+        <h2 class="section__title">Why RoboRoots?</h2>
+        <div class="grid features__grid" id="features-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============  STATS  ============ -->
+    <section id="stats" class="section stats">
+      <div class="container grid stats__grid" id="stats-grid"></div>
+    </section>
+
+    <!-- ============  PARTNERS  ============ -->
+    <section id="partners" class="section partners">
+      <div class="container">
+        <h2 class="section__title">Trusted by</h2>
+        <div class="partners__logos" id="partners-logos"></div>
+      </div>
+    </section>
+
+    <!-- ============  TESTIMONIALS  ============ -->
+    <section id="testimonials" class="section testimonials">
+      <div class="container">
+        <h2 class="section__title">Loved by makers worldwide</h2>
+        <div class="slider" id="testimonial-slider"></div>
+      </div>
+    </section>
+
+    <!-- ============  PRICING  ============ -->
+    <section id="pricing" class="section pricing">
+      <div class="container">
+        <h2 class="section__title">Pick your kit</h2>
+        <div class="grid pricing__grid" id="pricing-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============  FAQ  ============ -->
+    <section id="faq" class="section faq">
+      <div class="container">
+        <h2 class="section__title">Frequently asked</h2>
+        <div class="faq__list" id="faq-list"></div>
+      </div>
+    </section>
+
+    <!-- ============  NEWSLETTER  ============ -->
+    <section id="newsletter" class="section newsletter">
+      <div class="container newsletter__inner">
+        <h2>Stay in the loop</h2>
+        <p>Monthly tips, no spam.</p>
+        <form id="newsletter-form">
+          <input type="email" placeholder="you@example.com" required />
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+        </form>
+        <p class="small" id="newsletter-msg"></p>
+      </div>
+    </section>
+
+    <!-- ============  CONTACT  ============ -->
+    <section id="contact" class="section contact">
+      <div class="container contact__inner">
+        <h2 class="section__title">Get in touch</h2>
+        <form class="contact__form" id="contact-form">
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <textarea name="message" rows="5" placeholder="Message" required></textarea>
+          <button class="btn btn--primary" type="submit">Send message</button>
+        </form>
+        <p class="small" id="contact-msg"></p>
+      </div>
+    </section>
+
+    <!-- ============  FOOTER  ============ -->
+    <footer class="section footer">
+      <div class="container footer__inner">
+        <p>© <span id="year"></span> RoboRoots Inc. All rights reserved.</p>
+        <nav>
+          <a href="#hero">Home</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Modal Markup -->
+    <div id="downloadModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Download the App</h3>
+        <p>For the best experience, please download our app.</p>
+        <a href="https://example.com/download" target="_blank" class="btn btn--primary">Download Now</a>
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

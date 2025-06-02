@@ -1,0 +1,160 @@
+/* =====  Tokens  ===== */
+:root {
+    --clr-indigo: #4b6fff;
+    --clr-purple: #8b5cf6;
+    --clr-bg: #ffffff;
+    --clr-text: #222;
+    --clr-muted: #666;
+    --radius: 12px;
+    --shadow: 0 6px 20px -6px rgba(0,0,0,.15);
+    --max-w: 1100px;
+  }
+  
+  /* =====  Reset & base  ===== */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--clr-text);background:var(--clr-bg);line-height:1.6}
+  a{text-decoration:none;color:inherit}
+  .section{padding:4rem 1.5rem}
+  .container{max-width:var(--max-w);margin-inline:auto}
+  .section__title{text-align:center;font-size:2.25rem;margin-bottom:2.5rem}
+  
+  /* =====  Buttons  ===== */
+  .btn{display:inline-block;padding:.75rem 1.75rem;border-radius:var(--radius);font-weight:600;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn--primary{background:linear-gradient(135deg,var(--clr-indigo),var(--clr-purple));color:#fff}
+  .btn--ghost{background:#ffffff20;border:1px solid #ffffff40;color:#fff;backdrop-filter:blur(4px)}
+  
+  /* =====  HERO  ===== */
+  .hero{position:relative;background:linear-gradient(135deg,var(--clr-indigo),var(--clr-purple));color:#fff;overflow:hidden;text-align:left} 
+  .hero__content{display:flex;align-items:center;gap:3rem}
+  .hero__text{flex:1 1 50%}
+  .hero__text h1{font-size:clamp(2.5rem,6vw,4rem);line-height:1.2;margin-bottom:1rem}
+  .hero__text .lead{font-size:1.25rem;opacity:.9;max-width:40ch}
+  .hero__img{flex:1 1 40%;width:100%;max-width:420px;animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  
+  /* =====  FEATURES  ===== */
+  .features__grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .feature-card{background:#fff;padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow);text-align:center}
+  .feature-card .icon{font-size:2.5rem;margin-bottom:1rem}
+  .feature-card p{color:var(--clr-muted)}
+  
+  /* =====  STATS  ===== */
+  .stats{background:#f9fafc}
+  .stats__grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));text-align:center}
+  .stat__number{font-size:2rem;font-weight:700;color:var(--clr-indigo)}
+  .stat__label{color:var(--clr-muted)}
+  
+  /* =====  PARTNERS  ===== */
+  .partners__logos{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;align-items:center;filter:grayscale(1);opacity:.8}
+  .partners__logos img{height:40px}
+  
+  /* =====  TESTIMONIALS  ===== */
+  .testimonials{background:#fff}
+  .slider{position:relative;overflow:hidden}
+  .slide{display:none;text-align:center;max-width:700px;margin-inline:auto}
+  .slide.active{display:block}
+  .slide p{margin-bottom:1rem}
+  .slide .author{font-weight:600;font-style:italic}
+  
+  /* =====  PRICING  ===== */
+  .pricing__grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .price-card{border:2px solid #e5e7eb;border-radius:var(--radius);padding:2rem;text-align:center;transition:border-color .2s}
+  .price-card:hover{border-color:var(--clr-indigo)}
+  .price-card .price{font-size:2.25rem;font-weight:700;margin:1rem 0}
+  .price-card ul{list-style:none;margin-bottom:1.5rem}
+  .price-card li{margin:.25rem 0}
+  
+  /* =====  FAQ  ===== */
+  .faq-item{border-bottom:1px solid #e5e7eb;padding:1rem 0}
+  .faq-q{width:100%;background:none;border:none;font-size:1rem;text-align:left;font-weight:600;cursor:pointer;padding:.5rem 0}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--clr-muted)}
+  .faq-a.open{max-height:200px;margin-top:.5rem}
+  
+  /* =====  NEWSLETTER  ===== */
+  .newsletter{background:linear-gradient(135deg,var(--clr-indigo),var(--clr-purple));color:#fff;text-align:center}
+  .newsletter__inner{display:flex;flex-direction:column;gap:1rem;align-items:center}
+  #newsletter-form{display:flex;gap:.5rem;flex-wrap:wrap}
+  #newsletter-form input{padding:.75rem 1rem;border-radius:var(--radius);border:none;width:250px}
+  .small{font-size:.875rem;opacity:.8}
+  
+  /* =====  CONTACT  ===== */
+  .contact__form{display:flex;flex-direction:column;gap:1rem;max-width:500px;margin-inline:auto}
+  .contact__form input,.contact__form textarea{padding:.75rem 1rem;border:1px solid #e5e7eb;border-radius:var(--radius)}
+  
+  /* =====  FOOTER  ===== */
+  .footer{background:#111827;color:#9ca3af;text-align:center}
+  .footer__inner{display:flex;flex-direction:column;gap:1rem;align-items:center}
+  .footer nav{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+  .footer nav a:hover{color:#fff}
+  
+  /* =====  Utilities  ===== */
+  .gradient{background:linear-gradient(135deg,#fff 0%,#ffd 30%,#fff 60%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  @media(max-width:768px){.hero__content{flex-direction:column;text-align:center}.hero__img{max-width:300px}}
+
+/* Modal Container: full-screen overlay with fade-in effect */
+.modal {
+  display: none; /* Hidden until shown */
+  position: fixed;
+  z-index: 20; /* Higher than hero content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+  animation: fadeIn 0.4s; /* Subtle fade in */
+}
+
+/* Modal Content: centered box with design matching your style */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto; /* Center vertically with spacing from top */
+  padding: 2rem;
+  border-radius: var(--radius); /* Matches your site's rounded corners */
+  max-width: 400px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Close Button Styling */
+.modal-content .close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--clr-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-content .close:hover {
+  color: var(--clr-indigo);
+}
+
+/* Additional Typography for Headings/Paragraphs in Modal */
+.modal-content h3 {
+  margin-top: 0;
+  color: var(--clr-indigo);
+}
+
+.modal-content p {
+  margin: 1rem 0 2rem;
+  color: var(--clr-text);
+}
+
+/* Adjusting the primary button inside modal (if needed) */
+.modal-content .btn.btn--primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}

@@ -24,6 +24,12 @@ app.use('/healthcheck', (req, res) => {
   res.send('Server works well!');
 });
 
+// Serve index.html for the root
+app.get("/landing", (req, res) => {
+  console.log('__dirname', __dirname)
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 // Import routes
 app.use('/api', apiRoutes);
 
